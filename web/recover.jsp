@@ -1,35 +1,16 @@
 <%-- 
-    Document   : create
-    Created on : Nov 9, 2014, 3:50:51 PM
+    Document   : recover
+    Created on : Nov 9, 2014, 3:37:50 PM
     Author     : terrelkl
 --%>
 
 <jsp:include page="assets/head.jsp" /> 
 
-
-<h1>Create an {element}</h1>
+<h1>Recover your account credentials</h1>
 <div class="col-lg-8">
     <form class="form-horizontal">
         <fieldset>
             <legend>Fill this out</legend>
-            <div class="form-group">
-                <label for="inputUserName" class="col-lg-2 control-label">Username</label>
-                <div class="col-lg-10">
-                    <input class="form-control" id="inputUserName" type="text">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputPassword1" class="col-lg-2 control-label">Password</label>
-                <div class="col-lg-10">
-                    <input class="form-control" id="inputPassword1" type="text">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputPassword2" class="col-lg-2 control-label">Password (again)</label>
-                <div class="col-lg-10">
-                    <input class="form-control" id="inputPassword2" type="text">
-                </div>
-            </div>
             <div class="form-group">
                 <label for="inputEmail" class="col-lg-2 control-label">Email</label>
                 <div class="col-lg-10">
@@ -63,4 +44,5 @@
         </fieldset>
     </form>
 </div>
+
 <jsp:include page="assets/foot.jsp" /> 

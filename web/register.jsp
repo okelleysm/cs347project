@@ -1,13 +1,12 @@
 <%-- 
-    Document   : create
-    Created on : Nov 9, 2014, 3:50:51 PM
+    Document   : register
+    Created on : Nov 9, 2014, 3:16:00 PM
     Author     : terrelkl
 --%>
 
 <jsp:include page="assets/head.jsp" /> 
 
-
-<h1>Create an {element}</h1>
+<h1>Register your account</h1>
 <div class="col-lg-8">
     <form class="form-horizontal">
         <fieldset>
@@ -63,4 +62,5 @@
         </fieldset>
     </form>
 </div>
+
 <jsp:include page="assets/foot.jsp" /> 
