@@ -20,7 +20,7 @@ public abstract class DBAccess {
         try {
             Class.forName("org.sqlite.JDBC");
             // create a database connection
-            connection = DriverManager.getConnection("jdbc:sqlite:/Users/okellesm/sample.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:cs347project/db/db.sqlite");
             initializeDB(connection);
         } 
         catch (SQLException sqe) {
