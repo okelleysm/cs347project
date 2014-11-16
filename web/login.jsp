@@ -3,7 +3,8 @@
     Created on : Nov 9, 2014, 3:33:28 PM
     Author     : terrelkl
 --%>
-
+<%@ taglib prefix="s" uri="WEB-INF/tlds/secure.tld" %>
+<s:secure/>
 <jsp:include page="assets/head.jsp" /> 
 
 <h1>Log into your account</h1>
