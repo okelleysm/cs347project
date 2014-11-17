@@ -24,7 +24,7 @@
                 </div>  
                 <div class="navbar-collapse collapse navbar-inverse-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">{User}'s Dashboard</a></li>
+                        <li class="active"><a href="dashboard.jsp">{User}'s Dashboard</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#">Logged in ({User})</a></li>

@@ -5,6 +5,10 @@
 <struts>
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
-        
+        <action name="LoginAction" class="action.LoginAction" >
+            <result name="dashboard">/dashboard.jsp</result>
+            <result name="admin">/admin.jsp</result>
+            <result name="input">/login.jsp</result>
+        </action>
     </package>
 </struts>
