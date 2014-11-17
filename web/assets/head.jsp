@@ -5,8 +5,7 @@
     Author     : terrelkl
 
 --%>
-<%@page contentType="text/html" %>
-<%@ taglib prefix="s" uri="/struts-tags" %>
+
 <!DOCTYPE html>
 <html>
     <head>
