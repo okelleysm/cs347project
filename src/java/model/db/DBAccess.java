@@ -20,7 +20,7 @@ public abstract class DBAccess {
         try {
             Class.forName("org.sqlite.JDBC");
             // create a database connection
-            connection = DriverManager.getConnection("jdbc:sqlite:cs347project/db/db.sqlite");
+            connection = DriverManager.getConnection("jdbc:sqlite:/cs/home/stu/okellesm/cs347project/db");
             initializeDB(connection);
         } 
         catch (SQLException sqe) {
@@ -42,23 +42,18 @@ public abstract class DBAccess {
         try {
             statement = connection.createStatement();
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
-
-            statement.executeUpdate("create table if not exists class" 
-                    + "(classNr varchar(10) default NULL, name varchar(30) default NULL)");
-
-            rs = statement.executeQuery("select classNr from class");
+           
+            rs = statement.executeQuery("select userid from users");
             if (!rs.next()) {
-                statement.executeUpdate("insert into class values"
-                        + "('ECON101','Intro to Economics'), "
-                        + "('COSC226','Web Development'), " 
-                        + "('MATH198','Discrete Mathematics')");
+                statement.executeUpdate("insert into users values"
+                        + "('1', '1', 'Bob', 'pwd', 'email', 'answer', '1')");
             }
 
             // display the table contents
-            rs = statement.executeQuery("select * from class");
+            rs = statement.executeQuery("select * from user");
             while (rs.next()) {
-                System.out.print("classNr: " + rs.getString("classNr")
-                        + "  name: " + rs.getString("name"));
+                System.out.print("User: " + rs.getString("userid")
+                        + "  Name: " + rs.getString("username"));
             }
 
             statement.close();
