@@ -20,7 +20,7 @@ public abstract class DBAccess {
         try {
             Class.forName("org.sqlite.JDBC");
             // create a database connection
-            connection = DriverManager.getConnection("jdbc:sqlite:/cs/home/stu/okellesm/cs347project/db");
+            connection = DriverManager.getConnection("jdbc:sqlite:347project.db");
             initializeDB(connection);
         } 
         catch (SQLException sqe) {
@@ -43,10 +43,13 @@ public abstract class DBAccess {
             statement = connection.createStatement();
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
            
+            statement.executeUpdate("create table if not exists users" 
+                + "(userid varchar(10) default NULL, name varchar(30) default NULL)");
+            
             rs = statement.executeQuery("select userid from users");
             if (!rs.next()) {
                 statement.executeUpdate("insert into users values"
-                        + "('1', '1', 'Bob', 'pwd', 'email', 'answer', '1')");
+                        + "('1', 'Bob')");
             }
 
             // display the table contents
