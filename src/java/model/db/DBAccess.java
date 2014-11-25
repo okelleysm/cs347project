@@ -20,7 +20,7 @@ public abstract class DBAccess {
         try {
             Class.forName("org.sqlite.JDBC");
             // create a database connection
-            connection = DriverManager.getConnection("jdbc:sqlite:/cs/home/stu/okellesm/cs347project/project.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Shaun\\Documents\\NetBeansProjects\\cs347project\\project.db");
             initializeDB(connection);
         } 
         catch (SQLException sqe) {
@@ -39,18 +39,35 @@ public abstract class DBAccess {
         Statement statement;
         ResultSet rs;
         
+        
+        String userTable = ("CREATE TABLE IF NOT EXISTS Users"
+                     + "(userId integer(10) NOT NULL,"
+                     + "securityQuestionId integer(10) NOT NULL,"
+                     + "userName varchar(16) NOT NULL,"
+                     + "password varchar(32) NOT NULL,"
+                     + "email varchar(64) NOT NULL,"
+                     +"securityAnswer varchar(32) NOT NULL,"
+                     +"userClass varchar(16) NOT NULL,"
+                     +"PRIMARY KEY (userId),"
+                     +"FOREIGN KEY (securityQuestionId)"
+                     + " REFERENCES SecurityQuestions (securityQuestionId));");
+        
         try {
             statement = connection.createStatement();
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
             
            //WANT TO TRY TO USE TEXT FILE TO DO THIS
-            statement.executeUpdate("create table if not exists users" 
-                + "(userid varchar(10) default NULL, name varchar(30) default NULL)");
+           // statement.executeUpdate("create table if not exists users" 
+             //   + "(userid varchar(10) default NULL, name varchar(30) default NULL)");
             
-            rs = statement.executeQuery("select userid from users");
+
+            //statement.executeUpdate("createTableUsers.sql");
+             statement.executeUpdate(userTable);
+            
+            rs = statement.executeQuery("select userid from Users");
             if (!rs.next()) {
-                statement.executeUpdate("insert into users values"
-                        + "('2', 'Jerry')");
+                statement.executeUpdate("insert into Users values"
+                        + "('2', '1', 'Jerry', 'pwd', 'email', 'answer', '1')");
             }
 
             // display the table contents
