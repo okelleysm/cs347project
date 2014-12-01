@@ -7,6 +7,9 @@
 
 <struts-config>
     <form-beans>
+        <form-bean name="Tasks" type="bean.Tasks"/>
+        <form-bean name="Users" type="bean.Users"/>
+        <form-bean name="Questions" type="bean.Questions"/>
     
     </form-beans>
     
