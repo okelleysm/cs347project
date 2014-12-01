@@ -20,7 +20,7 @@ public abstract class DBAccess {
         try {
             Class.forName("org.sqlite.JDBC");
             // create a database connection
-            connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Shaun\\Documents\\NetBeansProjects\\cs347project\\project.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:/cs/home/stu/okellesm/cs347project/project.db");
             initializeDB(connection);
         } 
         catch (SQLException sqe) {
@@ -50,7 +50,7 @@ public abstract class DBAccess {
                      +"userClass varchar(16) NOT NULL,"
                      +"PRIMARY KEY (userId),"
                      +"FOREIGN KEY (securityQuestionId)"
-                     + " REFERENCES SecurityQuestions (securityQuestionId));");
+                     + "REFERENCES SecurityQuestions (securityQuestionId));");
         
         try {
             statement = connection.createStatement();
