@@ -1,6 +1,10 @@
 package model.db;
 
+import java.io.*;
+import java.net.*;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * This is the parent class for database transactions.
@@ -38,8 +42,7 @@ public abstract class DBAccess {
     private void initializeDB(Connection connection) { 
         Statement statement;
         ResultSet rs;
-        
-        
+                
         String userTable = ("CREATE TABLE IF NOT EXISTS Users"
                      + "(userId integer(10) NOT NULL,"
                      + "securityQuestionId integer(10) NOT NULL,"
@@ -51,30 +54,23 @@ public abstract class DBAccess {
                      +"PRIMARY KEY (userId),"
                      +"FOREIGN KEY (securityQuestionId)"
                      + "REFERENCES SecurityQuestions (securityQuestionId));");
-        
+              
         try {
             statement = connection.createStatement();
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
+            statement.executeUpdate(userTable);
             
-           //WANT TO TRY TO USE TEXT FILE TO DO THIS
-           // statement.executeUpdate("create table if not exists users" 
-             //   + "(userid varchar(10) default NULL, name varchar(30) default NULL)");
-            
-
-            //statement.executeUpdate("createTableUsers.sql");
-             statement.executeUpdate(userTable);
-            
-            rs = statement.executeQuery("select userid from Users");
+            rs = statement.executeQuery("select userId from Users");
+            //String SQL
             if (!rs.next()) {
-                statement.executeUpdate("insert into Users values"
+                statement.executeUpdate("insert into Users VALUES"
                         + "('2', '1', 'Jerry', 'pwd', 'email', 'answer', '1')");
             }
 
             // display the table contents
-            rs = statement.executeQuery("select * from user");
+            rs = statement.executeQuery("select * from Users");
             while (rs.next()) {
-                System.out.print("User: " + rs.getString("userid")
-                        + "  Name: " + rs.getString("username"));
+                System.out.print("User: " + rs.getString("userId"));
             }
 
             statement.close();
