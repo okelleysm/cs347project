@@ -44,4 +44,32 @@ public class DBQuery extends DBAccess {
     return results;
   }
 
+  /**
+   * Execute an SQL query and return the results
+   * from all records stored in the selected table.
+   * 
+   * @param table The table to be queried
+   * @return An ArrayList containing the query results
+   */
+  public ArrayList<String> allFrom(String table) {
+    
+    ArrayList<String> result = new ArrayList<>();
+    
+    try {
+      Connection con = getConnection();
+      PreparedStatement stmt = con.prepareStatement("select * from " + table);
+      
+      ResultSet rs = stmt.executeQuery();
+      ResultSetMetaData md = rs.getMetaData();
+      
+      // Get field values
+      while (rs.next()) {
+        for (int i = 1; i <= md.getColumnCount(); i++) {
+          result.add(rs.getString(i));
+        }
+      }
+    } catch (SQLException ignore) {
+    }
+    return result;
+  }
 } // end class

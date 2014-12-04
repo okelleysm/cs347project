@@ -3,6 +3,8 @@
     Created on : Nov 16, 2014, 5:02:50 PM
     Author     : Leeroy
 --%>
+<%@page import="java.util.*"%>
+<jsp:useBean id="query" scope="session" class="model.db.DBQuery" />
 
 <jsp:include page="assets/head.jsp" /> 
 
@@ -29,14 +31,29 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><span class='glyphicon glyphicon-pencil'></span></td>
-                        <td><span class='glyphicon glyphicon-trash'></span></td>
-                        <td>1</td>
-                        <td>Lee</td>
-                        <td>User</td>
-                        <td>lee@jmu.edu</td>
-                    </tr>
+                <%
+                    ArrayList<String> tasks = query.allFrom("users");
+                    if (tasks != null) {
+                        int count = 0;
+                        Iterator it = tasks.iterator();
+                        while (it.hasNext()) {
+                            count++;
+                            if (count == 1) {
+                                out.println("<tr>");
+                                out.println("<td><span class='glyphicon glyphicon-pencil'></span></td>");
+                                out.println("<td><span class='glyphicon glyphicon-trash'></span></td>");
+                            }
+                            out.println("<td>" + it.next() + "</td>");
+                            if (count == 4) {
+                                it.next();
+                                it.next();
+                                it.next();
+                                out.println("</tr>");
+                                count = 0;
+                            }
+                        }
+                    }
+                %>
                 </tbody>
             </table>
         </div>
@@ -54,12 +71,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><span class='glyphicon glyphicon-pencil'></span></td>
-                        <td><span class='glyphicon glyphicon-trash'></span></td>
-                        <td>1</td>
-                        <td>The name of your first pet?</td>
-                    </tr>
+                <%
+                    ArrayList<String> questions = query.allFrom("securityQuestions");
+                    if (questions != null) {
+                        int count = 0;
+                        Iterator it = questions.iterator();
+                        while (it.hasNext()) {
+                            count++;
+                            if (count == 1) {
+                                out.println("<tr>");
+                                out.println("<td><span class='glyphicon glyphicon-pencil'></span></td>");
+                                out.println("<td><span class='glyphicon glyphicon-trash'></span></td>");
+                            }
+                            out.println("<td>" + it.next() + "</td>");
+                            if (count == 2) {
+                                out.println("</tr>");
+                                count = 0;
+                            }
+                        }
+                    }
+                %>
                 </tbody>
             </table>
         </div>
