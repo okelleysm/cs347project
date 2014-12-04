@@ -20,11 +20,11 @@ public abstract class DBAccess {
         try {
             Class.forName("org.sqlite.JDBC");
             // create a database connection
-            connection = DriverManager.getConnection("jdbc:sqlite:/cs/home/stu/terrelkl/cs347project/project.db");
-            initializeDB(connection);
+            connection = DriverManager.getConnection("jdbc:sqlite:C:/Users/Anthony/Documents/NetBeansProjects/cs347project/project.db");
+//            initializeDB(connection);
         } 
         catch (SQLException sqe) {
-            System.err.println(sqe.getMessage());
+            System.err.println(sqe.getMessage()); 
         }
         catch (ClassNotFoundException cnfe) {
         

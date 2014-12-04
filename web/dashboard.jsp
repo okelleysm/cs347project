@@ -3,6 +3,8 @@
     Created on : Nov 9, 2014, 3:40:25 PM
     Author     : terrelkl
 --%>
+<%@page import="java.util.*"%>
+<jsp:useBean id="query" scope="session" class="model.db.DBQuery" />
 
 <jsp:include page="assets/head.jsp" /> 
 
@@ -29,6 +31,27 @@
                     </tr>
                 </thead>
                 <tbody>
+                <%
+                    ArrayList<String> tasks = query.allFrom("tasks");
+                    if (tasks != null) {
+                        int count = 0;
+                        Iterator it = tasks.iterator();
+                        while (it.hasNext()) {
+                            count++;
+                            if (count == 1) {
+                                out.println("<tr>");
+                                out.println("<td><span class='glyphicon glyphicon-pencil'></span></td>");
+                                out.println("<td><span class='glyphicon glyphicon-trash'></span></td>");
+                            }
+                            out.println("<td>" + it.next() + "</td>");
+                            if (count == 5) {
+                                it.next();
+                                out.println("</tr>");
+                                count = 0;
+                            }
+                        }
+                    }
+                %>
                     <tr>
                         <td><span class='glyphicon glyphicon-pencil'></span></td>
                         <td><span class='glyphicon glyphicon-trash'></span></td>
