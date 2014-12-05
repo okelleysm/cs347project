@@ -6,8 +6,6 @@
 package action;
 
 import com.opensymphony.xwork2.ActionSupport;
-import java.io.IOException;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -18,13 +16,25 @@ import javax.servlet.http.HttpSession;
  */
 public class LoginAction extends ActionSupport {
 
+    HttpSession session;
     String inputUserName;
     String inputPassword;
     boolean submit;
     boolean cancel;
 
-    public String execute() {
-        return "dashboard";
+    public String execute(HttpServletRequest request, HttpServletResponse response) {
+        entity.User user = new entity.User(inputUserName, inputPassword);
+        String securityQuestionId = user.getData(2);
+        String userName = user.getData(3);
+        String userClass = user.getData(7);
+        if (user.authenticate()) {
+            session = request.getSession(true);
+            session.setAttribute("loggedIn", true);
+            session.setAttribute("securityQuestionId", securityQuestionId);
+            session.setAttribute("userName", userName);
+            session.setAttribute("userClass", userClass);
+        }
+        return SUCCESS;
     }
     
     public void validate() {

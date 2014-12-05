@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package objects;
+package entity;
 
 import java.util.ArrayList;
 import java.math.BigInteger;
@@ -24,15 +24,16 @@ public class User{
     model.db.DBQuery dbq = new model.db.DBQuery();
     
     public User(String user, String pass) {
-        this.userName = user;
+        this.userName = user.toLowerCase(); // Case Insensitive username will always be stored as lowercase.
         this.password = hashedPassword(pass);
         data = queryUser(user);
     }
     
     public boolean authenticate() {
         String query = "SELECT password FROM users WHERE userName='" + userName + "';";
-        if (dbq.doQuery(query).get(4).equalsIgnoreCase(password))
-            return true;
+        if (!data.isEmpty())
+            if (dbq.doQuery(query).get(4).equals(password))
+                return true;
         return false;
     }
     
@@ -53,6 +54,10 @@ public class User{
     private ArrayList<String> queryUser(String userName) {
         String query = "SELECT * FROM users WHERE userName='" + userName + "';";
         return dbq.doQuery(query);
+    }
+    
+    public String getData(int index) {
+        return data.get(index);
     }
     
     public String getUserName() {

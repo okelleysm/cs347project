@@ -5,6 +5,7 @@
 --%>
 <%@page contentType="text/html" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<jsp:useBean class="bean.GetQuestions" id="securityQuestions" scope="session" />
 <jsp:include page="assets/head.jsp" /> 
 
 <h1>Register your account</h1>
@@ -14,6 +15,7 @@
         <s:password label="Password" name="inputPassword1" />
         <s:password label="Password (again)" name="inputPassword2"/>
         <s:textfield label="Email" name="inputEmail"/>
+        <s:select label="Security Question" name="securityQuestion" list="data" />
         <s:textfield label="Answer" name="inputAnswer"/>
         <s:submit value="Login" name="submit" />
     </s:form>
