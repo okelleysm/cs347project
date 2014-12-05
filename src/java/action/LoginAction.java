@@ -5,12 +5,11 @@
  */
 package action;
 
+import com.opensymphony.xwork2.ActionSupport;
+import java.io.IOException;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Date;
-import java.util.Map;
-import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
 
 /**
  *
@@ -26,7 +25,7 @@ public class LoginAction extends ActionSupport {
     public String execute() {
         return "dashboard";
     }
-
+    
     public void validate() {
         if (inputUserName.isEmpty()) {
             addFieldError("inputUserName", "Name cannot be blank");
@@ -36,6 +35,11 @@ public class LoginAction extends ActionSupport {
         }
     }
 
+    private void userLogin(HttpServletRequest request,
+          HttpServletResponse response) throws IOException, ServletException {
+        // WHERE LEE LEFT OFF //
+    }
+    
     public String getInputUserName() {
         return inputUserName;
     }
