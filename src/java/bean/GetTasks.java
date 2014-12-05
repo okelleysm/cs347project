@@ -9,6 +9,6 @@ package bean;
  *
  * @author terrelkl
  */
-public class Question {
+public class GetTasks {
     
 }

@@ -9,6 +9,6 @@ package bean;
  *
  * @author terrelkl
  */
-public class User {
+public class GetQuestions {
     
 }

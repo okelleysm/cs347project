@@ -9,6 +9,6 @@ package bean;
  *
  * @author terrelkl
  */
-public class Task {
+public class GetUsers {
     
 }

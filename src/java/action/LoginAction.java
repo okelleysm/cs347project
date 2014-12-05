@@ -10,6 +10,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -33,11 +34,6 @@ public class LoginAction extends ActionSupport {
         if (inputPassword.isEmpty()) {
             addFieldError("inputPassword", "Password cannot be blank");
         }
-    }
-
-    private void userLogin(HttpServletRequest request,
-          HttpServletResponse response) throws IOException, ServletException {
-        // WHERE LEE LEFT OFF //
     }
     
     public String getInputUserName() {

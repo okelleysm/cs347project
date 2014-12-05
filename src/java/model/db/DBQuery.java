@@ -27,15 +27,13 @@ public class DBQuery extends DBAccess {
       }
       Statement st = connection.createStatement();
       ResultSet rs = st.executeQuery(query);
+      
+      int i = 0;
       while (rs.next()) {
-        results.add(rs.getString(1) + " " 
-                + rs.getString(2) + " " 
-                + rs.getString(3) + " " 
-                + rs.getString(4) + " "
-                + rs.getString(5) + " "
-                + rs.getString(6) + " "
-                + rs.getString(7) + " ");
+        results.add(rs.getString(i));
+        i++;
       }
+      
       connection.close();
     } catch (SQLException s) {
       s.printStackTrace();
