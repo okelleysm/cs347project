@@ -31,7 +31,7 @@ public class User{
     
     public boolean authenticate() {
         String query = "SELECT password FROM users WHERE userName='" + userName + "';";
-        if (dbq.doQuery(query).get(4).equalsIgnoreCase(password))
+        if (dbq.executeQuery(query).get(4).equalsIgnoreCase(password))
             return true;
         return false;
     }
@@ -52,7 +52,7 @@ public class User{
     
     private ArrayList<String> queryUser(String userName) {
         String query = "SELECT * FROM users WHERE userName='" + userName + "';";
-        return dbq.doQuery(query);
+        return dbq.executeQuery(query);
     }
     
     public String getUserName() {

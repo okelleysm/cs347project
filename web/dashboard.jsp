@@ -32,25 +32,28 @@
                 </thead>
                 <tbody>
                 <%
-                    ArrayList<String> tasks = query.allFrom("tasks");
-                    if (tasks != null) {
-                        int count = 0;
+                    ArrayList<String> tasks = query.executeQuery(
+                            "SELECT taskName, priority, dueDate, status FROM Tasks");
+                        
+                        int cloumn = 0;
+                        int rowCount = 1;
+                        
                         Iterator it = tasks.iterator();
                         while (it.hasNext()) {
-                            count++;
-                            if (count == 1) {
+                            cloumn++;
+                            if (cloumn == 1) {
                                 out.println("<tr>");
                                 out.println("<td><span class='glyphicon glyphicon-pencil'></span></td>");
                                 out.println("<td><span class='glyphicon glyphicon-trash'></span></td>");
+                                out.println("<td>" + rowCount + "</td>");
                             }
                             out.println("<td>" + it.next() + "</td>");
-                            if (count == 5) {
-                                it.next();
+                            if (cloumn == 4) {
                                 out.println("</tr>");
-                                count = 0;
+                                cloumn = 0;
+                                rowCount++;
                             }
                         }
-                    }
                 %>
                     <tr>
                         <td><span class='glyphicon glyphicon-pencil'></span></td>
