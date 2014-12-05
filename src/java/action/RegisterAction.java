@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 public class RegisterAction extends ActionSupport {
 
     bean.GetQuestions securityQuestionsBean = new bean.GetQuestions();
-    ArrayList<String> securityQuestions = securityQuestionsBean.securityQuestions();
+    // ArrayList<String> securityQuestions = securityQuestionsBean.;
     String inputUserName;
     String inputPassword1;
     String inputPassword2;

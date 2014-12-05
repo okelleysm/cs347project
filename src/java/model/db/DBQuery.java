@@ -18,44 +18,13 @@ public class DBQuery extends DBAccess {
    * @param query The query to be executed
    * @return An ArrayList containing the query results
    */
-  public ArrayList<String> doQuery(String query) {
-    ArrayList<String> results = new ArrayList<String>();
-    try {
-      Connection connection = getConnection();
-      if (connection == null) {
-        return null;
-      }
-      Statement st = connection.createStatement();
-      ResultSet rs = st.executeQuery(query);
-      
-      int i = 0;
-      while (rs.next()) {
-        results.add(rs.getString(i));
-        i++;
-      }
-      
-      connection.close();
-    } catch (SQLException s) {
-      s.printStackTrace();
-      return null;
-    }
-    return results;
-  }
-
-  /**
-   * Execute an SQL query and return the results
-   * from all records stored in the selected table.
-   * 
-   * @param table The table to be queried
-   * @return An ArrayList containing the query results
-   */
-  public ArrayList<String> allFrom(String table) {
+  public ArrayList<String> executeQuery(String query) {
     
     ArrayList<String> result = new ArrayList<>();
     
     try {
       Connection con = getConnection();
-      PreparedStatement stmt = con.prepareStatement("select * from " + table);
+      PreparedStatement stmt = con.prepareStatement(query);
       
       ResultSet rs = stmt.executeQuery();
       ResultSetMetaData md = rs.getMetaData();

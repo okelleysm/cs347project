@@ -31,29 +31,35 @@
                     </tr>
                 </thead>
                 <tbody>
-                <%
-                    ArrayList<String> tasks = query.allFrom("users");
-                    if (tasks != null) {
-                        int count = 0;
-                        Iterator it = tasks.iterator();
-                        while (it.hasNext()) {
-                            count++;
-                            if (count == 1) {
-                                out.println("<tr>");
-                                out.println("<td><span class='glyphicon glyphicon-pencil'></span></td>");
-                                out.println("<td><span class='glyphicon glyphicon-trash'></span></td>");
-                            }
-                            out.println("<td>" + it.next() + "</td>");
-                            if (count == 4) {
-                                it.next();
-                                it.next();
-                                it.next();
-                                out.println("</tr>");
-                                count = 0;
+                    <%
+                        ArrayList<String> tasks = query.executeQuery(
+                                "SELECT userName, userClass, email FROM Users");
+
+                        if (tasks != null) {
+
+                            int columnA = 0;
+                            int rowCountA = 1;
+
+                            Iterator it = tasks.iterator();
+                            while (it.hasNext()) {
+                                columnA++;
+                                if (columnA == 1) {
+                                    out.println("<tr>");
+                                    out.println("<td><span class='glyphicon glyphicon-pencil'></span></td>");
+                                    out.println("<td><span class='glyphicon glyphicon-trash'></span></td>");
+                                    out.println("<td>" + rowCountA + "</td>");
+                                }
+
+                                out.println("<td>" + it.next() + "</td>");
+
+                                if (columnA == 3) {
+                                    out.println("</tr>");
+                                    columnA = 0;
+                                    rowCountA++;
+                                }
                             }
                         }
-                    }
-                %>
+                    %>
                 </tbody>
             </table>
         </div>
@@ -71,26 +77,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                <%
-                    ArrayList<String> questions = query.allFrom("securityQuestions");
-                    if (questions != null) {
-                        int count = 0;
-                        Iterator it = questions.iterator();
-                        while (it.hasNext()) {
-                            count++;
-                            if (count == 1) {
+                    <%
+                        ArrayList<String> questions = query.executeQuery(
+                                "SELECT securityQuestion FROM SecurityQuestions");
+
+                        if (questions != null) {
+                            int rowCountB = 0;
+
+                            Iterator it2 = questions.iterator();
+                            while (it2.hasNext()) {
+                                rowCountB++;
                                 out.println("<tr>");
                                 out.println("<td><span class='glyphicon glyphicon-pencil'></span></td>");
                                 out.println("<td><span class='glyphicon glyphicon-trash'></span></td>");
-                            }
-                            out.println("<td>" + it.next() + "</td>");
-                            if (count == 2) {
+                                out.println("<td>" + rowCountB + "</td>");
+                                out.println("<td>" + it2.next() + "</td>");
                                 out.println("</tr>");
-                                count = 0;
                             }
                         }
-                    }
-                %>
+                    %>
                 </tbody>
             </table>
         </div>

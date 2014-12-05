@@ -4,8 +4,7 @@
     Author     : terrelkl
 --%>
 <%@page import="java.util.*"%>
-<jsp:useBean id="query" scope="session" class="model.db.DBQuery" />
-
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <jsp:include page="assets/head.jsp" /> 
 
 <div class="col-lg-4">
@@ -31,27 +30,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                <%
-                    ArrayList<String> tasks = query.allFrom("tasks");
-                    if (tasks != null) {
-                        int count = 0;
-                        Iterator it = tasks.iterator();
-                        while (it.hasNext()) {
-                            count++;
-                            if (count == 1) {
-                                out.println("<tr>");
-                                out.println("<td><span class='glyphicon glyphicon-pencil'></span></td>");
-                                out.println("<td><span class='glyphicon glyphicon-trash'></span></td>");
-                            }
-                            out.println("<td>" + it.next() + "</td>");
-                            if (count == 5) {
-                                it.next();
-                                out.println("</tr>");
-                                count = 0;
-                            }
-                        }
-                    }
-                %>
+                    <s:bean name="bean.GetTasks" var="tasks">
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>3</td>
+                            <s:iterator value="tasks">
+                                <td><s:property value="taskName.toString()"/></td>
+                                <td><s:property value="priority"/></td>
+                                <td><s:property value="dueDate"/></td>
+                                <td><s:property value="status"/></td>
+                            </s:iterator>
+                    </s:bean>
                     <tr>
                         <td><span class='glyphicon glyphicon-pencil'></span></td>
                         <td><span class='glyphicon glyphicon-trash'></span></td>

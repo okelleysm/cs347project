@@ -8,21 +8,18 @@ import java.util.ArrayList;
  *
  * @author terrelkl
  */
-public class GetQuestions implements Serializable{
+public class GetQuestions{
     
     String query = "SELECT securityQuestionId, securityQuestion FROM securityQuestions;";
     model.db.DBQuery dbq = new model.db.DBQuery();
-    ArrayList<String> data = dbq.doQuery(query);
+    ArrayList<String> questions = dbq.executeQuery(query);
 
-    public ArrayList<String> getData() {
-        return data;
+    public ArrayList<String> getQuestions() {
+        return questions;
     }
 
-    public void setData(ArrayList<String> data) {
-        this.data = data;
+    public void setQuestions(ArrayList<String> questions) {
+        this.questions = questions;
     }
-    
-    public ArrayList<String> securityQuestions() {
-        return data;
-    }
+
 }
