@@ -15,7 +15,7 @@
             <s:password label="Password" name="inputPassword1" />
             <s:password label="Password (again)" name="inputPassword2"/>
             <s:textfield label="Email" name="inputEmail"/>
-            <s:select label="Question" name="inputQuestion" list="data"/>
+            <s:select style="color: #000;" label="Question" name="inputQuestion" list="questions"/>
             <s:textfield label="Answer" name="inputAnswer"/>
             <s:submit value="Login" name="submit" />
         </s:form>

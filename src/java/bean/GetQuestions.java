@@ -1,25 +1,22 @@
-
 package bean;
-
-import java.io.Serializable;
-import java.util.ArrayList;
 
 /**
  *
- * @author terrelkl
+ * @author zbanaw
  */
-public class GetQuestions{
+public class GetQuestions {
     
-    String query = "SELECT securityQuestionId, securityQuestion FROM securityQuestions;";
-    model.db.DBQuery dbq = new model.db.DBQuery();
-    ArrayList<String> questions = dbq.executeQuery(query);
+    private String[] questions = {"What is your favorite color?", "What is your mothers maiden name?", "What is the name of your first pet?"};
 
-    public ArrayList<String> getQuestions() {
+    public String[] getQuestions() {
         return questions;
     }
 
-    public void setQuestions(ArrayList<String> questions) {
+    public void setQuestions(String[] questions) {
         this.questions = questions;
     }
 
+    
+    
+    
 }

@@ -20,8 +20,7 @@ import java.util.regex.Pattern;
  */
 public class RegisterAction extends ActionSupport {
 
-    bean.GetQuestions securityQuestionsBean = new bean.GetQuestions();
-    // ArrayList<String> securityQuestions = securityQuestionsBean.;
+    String inputQuestion;
     String inputUserName;
     String inputPassword1;
     String inputPassword2;
@@ -44,9 +43,9 @@ public class RegisterAction extends ActionSupport {
         if (inputEmail.isEmpty()) {
             addFieldError("inputEmail", "Email cannot be blank");
         }
-        /* if (inputQuestion.isEmpty()) {
+        if (inputQuestion.isEmpty()) {
             addFieldError("inputQuestion", "You must select a security question");
-        } */
+        }
         if (inputAnswer.isEmpty()) {
             addFieldError("inputAnswer", "Security Answer cannot be blank");
         }
@@ -103,13 +102,13 @@ public class RegisterAction extends ActionSupport {
         this.inputEmail = inputEmail;
     }
 
-    /* public String getInputQuestion() {
+    public String getInputQuestion() {
         return inputQuestion;
     }
 
     public void setInputQuestion(String inputQuestion) {
         this.inputQuestion = inputQuestion;
-    } */
+    }
 
     public String getInputAnswer() {
         return inputAnswer;
