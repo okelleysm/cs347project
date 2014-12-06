@@ -20,7 +20,7 @@
         <div class="container">
             <div class="navbar navbar-inverse">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Todo List</a>
+                    <a class="navbar-brand" href="index.jsp">Todo List</a>
                 </div>  
                 <div class="navbar-collapse collapse navbar-inverse-collapse">
                     <ul class="nav navbar-nav">
@@ -28,7 +28,7 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#">Logged in ({User})</a></li>
-                        <li><a href="#">Logout</a></li>
+                        <li><a href="logout.jsp">Logout</a></li>
                     </ul>
                 </div>
             </div>

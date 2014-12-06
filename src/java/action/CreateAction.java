@@ -13,11 +13,21 @@ import com.opensymphony.xwork2.ActionSupport;
  */
 public class CreateAction extends ActionSupport {
     
+    String inputPriority;
+    
     public CreateAction() {
     }
     
     public String execute() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
+    public String getInputPriority() {
+        return inputPriority;
+    }
+
+    public void setInputPriority(String inputPriority) {
+        this.inputPriority = inputPriority;
     }
     
 }
