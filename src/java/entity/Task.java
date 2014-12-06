@@ -8,7 +8,8 @@ package entity;
 import java.util.ArrayList;
 
 /**
- *
+ * Inserts new Task object into database.
+ * 
  * @author terrelkl
  */
 public class Task {

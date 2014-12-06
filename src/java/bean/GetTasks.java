@@ -5,29 +5,49 @@
  */
 package bean;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- *
+ * Gets Tasks to display users tasks in table.
+ * 
  * @author terrelkl
  */
-public class GetTasks implements Serializable{
+public class GetTasks {
     
-    String query = "SELECT taskName, priority, dueDate, status FROM Tasks WHERE userId=1;";
-    model.db.DBQuery dbq = new model.db.DBQuery();
-    ArrayList<String> data = dbq.executeQuery(query);
+    private String taskName;
+    private String priority;
+    private String dueDate;
+    private String status;
 
-    public ArrayList<String> getData() {
-        return data;
+    public String getTaskName() {
+        return taskName;
     }
 
-    public void setData(ArrayList<String> data) {
-        this.data = data;
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
     }
-    
-    public ArrayList<String> tasks() {
-        return data;
+
+    public String getPriority() {
+        return priority;
     }
+
+    public void setPriority(String priority) {
+        this.priority = priority;
+    }
+
+    public String getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
 }

@@ -30,18 +30,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <s:bean name="bean.GetTasks" var="tasks">
                         <tr>
                             <td></td>
                             <td></td>
-                            <td>3</td>
-                            <s:iterator value="tasks">
-                                <td><s:property value="taskName.toString()"/></td>
+                            <s:iterator value="tasks" value="list">
+                                <td><s:property value="taskName"/></td>
                                 <td><s:property value="priority"/></td>
                                 <td><s:property value="dueDate"/></td>
                                 <td><s:property value="status"/></td>
                             </s:iterator>
-                    </s:bean>
                     <tr>
                         <td><span class='glyphicon glyphicon-pencil'></span></td>
                         <td><span class='glyphicon glyphicon-trash'></span></td>
