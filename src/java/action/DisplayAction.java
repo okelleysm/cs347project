@@ -7,6 +7,7 @@ package action;
 
 import bean.GetTasks;
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class DisplayAction extends ActionSupport {
         task.setDueDate("1987-1-1");
         task.setStatus("Open");
         list.add(task);
-
+        ServletActionContext.getRequest().setAttribute("names", list);
         return SUCCESS;
     }
 

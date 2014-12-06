@@ -30,15 +30,16 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <s:iterator value="list" status="stat" >
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <s:iterator value="tasks" value="list">
-                                <td><s:property value="taskName"/></td>
-                                <td><s:property value="priority"/></td>
-                                <td><s:property value="dueDate"/></td>
-                                <td><s:property value="status"/></td>
-                            </s:iterator>
+                            <td><span class='glyphicon glyphicon-pencil'></span></td>
+                            <td><span class='glyphicon glyphicon-trash'></span></td>
+                            <td><s:property value="taskName"/></td>
+                            <td><s:property value="priority"/></td>
+                            <td><s:property value="dueDate"/></td>
+                            <td><s:property value="status"/></td>
+                        </tr> 
+                    </s:iterator>
                     <tr>
                         <td><span class='glyphicon glyphicon-pencil'></span></td>
                         <td><span class='glyphicon glyphicon-trash'></span></td>

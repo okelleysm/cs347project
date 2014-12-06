@@ -13,10 +13,10 @@ package bean;
  */
 public class GetTasks {
     
-    private String taskName;
-    private String priority;
-    private String dueDate;
-    private String status;
+    private String taskName = null;
+    private String priority = null;
+    private String dueDate = null;
+    private String status = null;
 
     public String getTaskName() {
         return taskName;
