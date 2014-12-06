@@ -24,7 +24,6 @@ public abstract class DBAccess {
         try {
             Class.forName("org.sqlite.JDBC");
             // create a database connection
-            connection = DriverManager.getConnection("jdbc:sqlite:/cs/home/stu/zbanaw/NetBeansProjects/cs347project/project.db");
             connection = DriverManager.getConnection("jdbc:sqlite:/cs/home/stu/terrelkl/NetBeansProjects/cs347project/project.db");
 //            connection = DriverManager.getConnection("jdbc:sqlite:/cs/home/stu/okellesm/cs347project/project.db");
             

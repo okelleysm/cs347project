@@ -30,30 +30,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                <%
-                    ArrayList<String> tasks = query.executeQuery(
-                            "SELECT taskName, priority, dueDate, status FROM Tasks");
-                        
-                        int cloumn = 0;
-                        int rowCount = 1;
-                        
-                        Iterator it = tasks.iterator();
-                        while (it.hasNext()) {
-                            cloumn++;
-                            if (cloumn == 1) {
-                                out.println("<tr>");
-                                out.println("<td><span class='glyphicon glyphicon-pencil'></span></td>");
-                                out.println("<td><span class='glyphicon glyphicon-trash'></span></td>");
-                                out.println("<td>" + rowCount + "</td>");
-                            }
-                            out.println("<td>" + it.next() + "</td>");
-                            if (cloumn == 4) {
-                                out.println("</tr>");
-                                cloumn = 0;
-                                rowCount++;
-                            }
-                        }
-                %>
                     <s:bean name="bean.GetTasks" var="tasks">
                         <tr>
                             <td></td>
